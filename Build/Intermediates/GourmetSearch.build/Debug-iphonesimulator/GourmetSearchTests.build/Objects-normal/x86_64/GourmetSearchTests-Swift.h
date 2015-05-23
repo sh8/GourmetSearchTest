@@ -63,8 +63,23 @@ typedef struct _NSZone NSZone;
 # endif
 #endif
 #if defined(__has_feature) && __has_feature(modules)
+@import XCTest;
+@import ObjectiveC;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+@class NSInvocation;
+
+SWIFT_CLASS("_TtC18GourmetSearchTests18GourmetSearchTests")
+@interface GourmetSearchTests : XCTestCase
+- (void)setUp;
+- (void)tearDown;
+- (void)testExample;
+- (void)testPerformanceExample;
+- (instancetype)initWithInvocation:(NSInvocation *)invocation OBJC_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSelector:(SEL)selector OBJC_DESIGNATED_INITIALIZER;
+- (instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 #pragma clang diagnostic pop
