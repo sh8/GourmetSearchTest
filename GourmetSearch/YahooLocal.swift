@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
+import AlamofireSwiftyJSON
 
 public struct Shop: Printable {
     public var gid: String? = nil
