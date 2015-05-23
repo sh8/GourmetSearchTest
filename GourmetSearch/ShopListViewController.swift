@@ -12,6 +12,17 @@ class ShopListViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     
+    var yls : YahooLocalSearch = YahooLocalSearch()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        var qc = QueryCondition()
+        qc.query = "ハンバーガー"
+        yls = YahooLocalSearch(condition: qc)
+        yls.loadData(reset: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
