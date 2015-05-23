@@ -114,3 +114,34 @@ public struct QueryCondition {
         }
     }
 }
+
+let env = NSProcessInfo.processInfo().environment
+
+public class YahooLocalSearch{
+    // Yahoo!ローカルサーチAPIのアプリケーションID
+    let apiID = env["apiID"] as? String
+    
+    // APIのベースURL
+    let apiUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch"
+    
+    // 1ページのレコード数
+    let perPage = 10
+    
+    // 読み込み済みの店舗
+    public var shops = [Shop]()
+    
+    // 全何件か
+    public var total = 0
+    
+    // 検索条件
+    var condition: QueryCondition = QueryCondition(){
+        // プロパティオブザーバ: 新しい値がセットされた後に読み込み済みの店舗を捨てる
+        didSet{
+            shops = []
+            total = 0
+        }
+    }
+    
+    // パラメタなしのイニシャライザ
+    public init(){}
+}
