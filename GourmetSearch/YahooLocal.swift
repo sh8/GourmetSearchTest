@@ -160,7 +160,7 @@ public class YahooLocalSearch{
         // 条件ディクショナリを取得
         var params = condition.queryParams
         
-        params["apiid"] = apiId
+        params["appid"] = apiId
         params["output"] = "json"
         params["start"] = String(shops.count + 1)
         params["result"] = String(perPage)
@@ -173,7 +173,7 @@ public class YahooLocalSearch{
             if error != nil {
                 return
             }
-            
+
             //店舗データをself.shopsに追加する
             for (key, item) in json["Feature"] {
                 var shop = Shop()
@@ -230,6 +230,7 @@ public class YahooLocalSearch{
                     }
                 }
                 
+                println(shop)
                 self.shops.append(shop)
             }
             // 総件数を反映
