@@ -118,6 +118,13 @@ public struct QueryCondition {
 let env = NSProcessInfo.processInfo().environment
 
 public class YahooLocalSearch{
+    
+    // 読み込み開始Notification
+    public let YLSLoadStartNotification = "YLSLoadStartNotification"
+
+    // 読み込み完了Notification
+    public let YLSLoadCompleteNotification = "YLSLoadCompleteNotification"
+
     // Yahoo!ローカルサーチAPIのアプリケーションID
     let apiId = env["apiID"] as? String
     
@@ -165,12 +172,27 @@ public class YahooLocalSearch{
         params["start"] = String(shops.count + 1)
         params["result"] = String(perPage)
         
+        // API実行開始を通知する
+        NSNotificationCenter.defaultCenter().postNotificationName(YLSLoadStartNotification, object: nil)
+        
         // APIリクエスト実行
         Alamofire.request(.GET, apiUrl, parameters: params).responseSwiftyJSON {
             (request, reaponse, json, error) -> Void in
             
             // エラーがあれば終了
             if error != nil {
+                // API実行終了を通知する
+                var message = "Unknown error."
+                if let description = error?.description {
+                    message = description
+                }
+                
+                let userInfo = ["error": message]
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(
+                    self.YLSLoadCompleteNotification,
+                    object: nil,
+                    userInfo: userInfo)
                 return
             }
 
@@ -239,6 +261,9 @@ public class YahooLocalSearch{
             } else {
                 self.total = 0
             }
+            
+            // API終了を通知する
+            NSNotificationCenter.defaultCenter().postNotificationName(self.YLSLoadCompleteNotification, object: nil)
         }
     }
 }
