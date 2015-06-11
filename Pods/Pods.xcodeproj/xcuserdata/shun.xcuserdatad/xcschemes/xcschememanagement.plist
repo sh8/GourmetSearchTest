@@ -4,10 +4,75 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-Alamofire-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>Pods-Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>Pods-GourmetSearch-Alamofire-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>Pods-GourmetSearch-Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>Pods-GourmetSearch-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GourmetSearch-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>Pods-GourmetSearch.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GourmetSearchTests-Alamofire-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>Pods-GourmetSearchTests-Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>Pods-GourmetSearchTests-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GourmetSearchTests-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>Pods-GourmetSearchTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+		</dict>
+		<key>Pods-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
@@ -17,12 +82,77 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>33CD53CE9AC0EDAF25EB4A8D</key>
+		<key>02732AF81F9EFE074DEE057F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A33990DA799CF7A33B4DFA0</key>
+		<key>1F5710EFA8105563C2768774</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1FD4883A3C2D36EF78C73E98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>268DB348D59B03DB6E844557</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>45D2CCE567FA7AD035386641</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>65A3FD30A106B70AA8927F50</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>76A281759E3224C1408BD87B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>859A37103113FDD037BD9B55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90AC81D7F9767962C435E4C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9746912DDDD974B3165CCBE9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BED30C7273970A460006A654</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C45B9CE3FEA5B7B9DEDFB1DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB8032D3A5568D69D4C82E92</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E49652F6B6D75E71B3A640A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E537B60270800160882EBB92</key>
 		<dict>
 			<key>primary</key>
 			<true/>
