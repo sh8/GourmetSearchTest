@@ -40,7 +40,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="mGN-hz-YCd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8Q-RV-TaB">
@@ -98,7 +98,8 @@
                                             <outlet property="nameHeight" destination="mGN-hz-YCd" id="1Io-r0-ZP1"/>
                                             <outlet property="photo" destination="oUP-an-Uyl" id="Uqj-J6-ihe"/>
                                             <outlet property="station" destination="ZiY-d7-hGS" id="M33-Ua-nge"/>
-                                            <outlet property="stationX" destination="Wxc-Ay-jzm" id="Olu-5f-g1L"/>
+                                            <outlet property="stationWidth" destination="ZrL-q1-gUR" id="d0Q-zV-EfX"/>
+                                            <outlet property="stationX" destination="Wxc-Ay-jzm" id="CIo-k1-IBS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
