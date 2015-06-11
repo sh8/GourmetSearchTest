@@ -22,6 +22,11 @@ class ShopListItemTableViewCell: UITableViewCell {
     
     var shop: Shop = Shop(){
         didSet{
+            //URLがあれば画像を表示する
+            if let url = shop.photoUrl {
+                photo.sd_cancelCurrentImageLoad()
+                photo.sd_setImageWithURL(NSURL(string: url))
+            }
             //店舗名をラベルに設定
             println(shop.name)
             name.text = shop.name
@@ -58,7 +63,6 @@ class ShopListItemTableViewCell: UITableViewCell {
             } else {
                 station.hidden = true
             }
-            
         }
     }
     
