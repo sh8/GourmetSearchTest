@@ -24,8 +24,11 @@ class ShopListItemTableViewCell: UITableViewCell {
         didSet{
             //URLがあれば画像を表示する
             if let url = shop.photoUrl {
-                photo.sd_cancelCurrentImageLoad()
-                photo.sd_setImageWithURL(NSURL(string: url))
+                photo.sd_setImageWithURL(
+                    NSURL(string: url),
+                    placeholderImage: UIImage(named: "loading"),
+                    options: .RetryFailed
+                )
             }
             //店舗名をラベルに設定
             println(shop.name)
