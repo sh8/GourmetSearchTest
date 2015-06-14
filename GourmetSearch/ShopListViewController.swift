@@ -14,6 +14,7 @@ class ShopListViewController: UIViewController, UITableViewDelegate, UITableView
     
     var yls : YahooLocalSearch = YahooLocalSearch()
     var loadDataObserver : NSObjectProtocol?
+    var refreshObserver : NSObjectProtocol?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,6 +66,16 @@ class ShopListViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Pull to Refreshコントロール初期化
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(
+            self,
+            action: "onRefresh:",
+            forControlEvents: .ValueChanged
+        )
+        self.tableView.addSubview(refreshControl)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -94,11 +105,39 @@ class ShopListViewController: UIViewController, UITableViewDelegate, UITableView
                 let cell = tableView.dequeueReusableCellWithIdentifier("ShopListItem") as! ShopListItemTableViewCell
                 cell.shop = yls.shops[indexPath.row]
                 
+                if yls.shops.count < yls.total {
+                    if yls.shops.count - indexPath.row <= 4 {
+                        yls.loadData()
+                    }
+                }
+                
                 return cell
             }
         }
         // 通常はここに到達しない。
         return UITableViewCell()
+    }
+    
+    // MARK: - アプリケーションロジック
+    
+    func onRefresh(refreshControl: UIRefreshControl){
+        // UIRefreshControlを読込中状態にする
+        refreshControl.beginRefreshing()
+        // 終了通知を受信したらUIRefreshControlを停止する
+        refreshObserver = NSNotificationCenter.defaultCenter().addObserverForName(
+            yls.YLSLoadCompleteNotification,
+            object: nil,
+            queue: nil,
+            usingBlock: {
+                notification in
+                // 通知の待受を終了
+                NSNotificationCenter.defaultCenter().removeObserver(self.refreshObserver!)
+                // UIRefreshControlを停止する
+                refreshControl.endRefreshing()
+            }
+        )
+        // 再取得
+        yls.loadData(reset: true)
     }
 
 }
