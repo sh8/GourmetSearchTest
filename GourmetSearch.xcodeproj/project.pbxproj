@@ -13,6 +13,8 @@
 		2438D1D21B1086B900B480ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2438D1D11B1086B900B480ED /* Images.xcassets */; };
 		2438D1D51B1086B900B480ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2438D1D31B1086B900B480ED /* LaunchScreen.xib */; };
 		2438D1E11B1086B900B480ED /* GourmetSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2438D1E01B1086B900B480ED /* GourmetSearchTests.swift */; };
+		244595E31B2D5B1400C18B03 /* SearchTopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244595E21B2D5B1400C18B03 /* SearchTopTableViewController.swift */; };
+		244595E51B2D6E7900C18B03 /* FreewordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244595E41B2D6E7900C18B03 /* FreewordTableViewCell.swift */; };
 		248CB0441B109A33005D2A9D /* ShopListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248CB0431B109A33005D2A9D /* ShopListItemTableViewCell.swift */; };
 		2497DA021B2953FB000F1AC8 /* Alamofire_SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2497DA011B2953FB000F1AC8 /* Alamofire_SwiftyJSON.framework */; };
 		2497DA061B295405000F1AC8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2497DA051B295405000F1AC8 /* SwiftyJSON.framework */; };
@@ -55,6 +57,8 @@
 		2438D1DA1B1086B900B480ED /* GourmetSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GourmetSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2438D1DF1B1086B900B480ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2438D1E01B1086B900B480ED /* GourmetSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmetSearchTests.swift; sourceTree = "<group>"; };
+		244595E21B2D5B1400C18B03 /* SearchTopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTopTableViewController.swift; sourceTree = "<group>"; };
+		244595E41B2D6E7900C18B03 /* FreewordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreewordTableViewCell.swift; sourceTree = "<group>"; };
 		246FFACB1B10902C00468C3E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Alamofire-SwiftyJSON/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		246FFACC1B10902C00468C3E /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = "Alamofire-SwiftyJSON/build/Debug-iphoneos/AlamofireSwiftyJSON.framework"; sourceTree = "<group>"; };
 		246FFACF1B10903000468C3E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Alamofire-SwiftyJSON/SwiftyJSON/build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 			children = (
 				2438D1CC1B1086B900B480ED /* ShopListViewController.swift */,
 				248CB0431B109A33005D2A9D /* ShopListItemTableViewCell.swift */,
+				244595E21B2D5B1400C18B03 /* SearchTopTableViewController.swift */,
+				244595E41B2D6E7900C18B03 /* FreewordTableViewCell.swift */,
 			);
 			name = ShopList;
 			sourceTree = "<group>";
@@ -401,7 +407,9 @@
 				248CB0441B109A33005D2A9D /* ShopListItemTableViewCell.swift in Sources */,
 				2438D1CD1B1086B900B480ED /* ShopListViewController.swift in Sources */,
 				24D060621B10B35B00D167CE /* YahooLocal.swift in Sources */,
+				244595E51B2D6E7900C18B03 /* FreewordTableViewCell.swift in Sources */,
 				2438D1CB1B1086B900B480ED /* AppDelegate.swift in Sources */,
+				244595E31B2D5B1400C18B03 /* SearchTopTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
