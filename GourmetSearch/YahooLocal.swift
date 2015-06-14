@@ -171,7 +171,7 @@ public class YahooLocalSearch{
         }
         
         // API実行中フラグをON
-        loading = true
+        self.loading = true
         
         // 条件ディクショナリを取得
         var params = condition.queryParams
