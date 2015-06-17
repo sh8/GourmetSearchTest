@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZOu-6g-CmC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yGd-Se-Mwx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wQp-sK-Hag">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wQp-sK-Hag">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -126,6 +126,7 @@
                             <constraint firstItem="wQp-sK-Hag" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="z5u-1u-iTg"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="g5w-av-h4Q"/>
                     <connections>
                         <outlet property="tableView" destination="wQp-sK-Hag" id="wmi-Wf-Up3"/>
                         <segue destination="5Df-Sc-ptJ" kind="show" identifier="PushShopDetail" id="FKJ-6O-QIF"/>
@@ -133,7 +134,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="134"/>
+            <point key="canvasLocation" x="1427" y="485"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="9QH-6k-aej">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlS-f1-h1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="yGd-Se-Mwx" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="kkj-hK-UYG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ZOu-6g-CmC" kind="relationship" relationship="viewControllers" id="cRs-yu-CCD"/>
+                        <segue destination="m1l-4E-npp" kind="relationship" relationship="viewControllers" id="x4X-hD-VXP"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="-789" y="485"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="8xg-kd-dkQ">
+            <objects>
+                <navigationController id="m1l-4E-npp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="tabbar-star" id="FYc-MX-Fxp"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dwv-SL-LDL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="m8C-ni-OiE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lwq-o2-13C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="752"/>
         </scene>
         <!--Shop Detail View Controller-->
         <scene sceneID="2Ox-dK-I4e">
@@ -366,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5l-DT-hAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="853"/>
+            <point key="canvasLocation" x="2139" y="485"/>
         </scene>
         <!--Search Top Table View Controller-->
         <scene sceneID="pE1-BJ-WEU">
@@ -434,12 +471,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="836" y="134"/>
+            <point key="canvasLocation" x="716" y="-270"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="u0M-Qw-Ebl">
             <objects>
                 <navigationController id="ZOu-6g-CmC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="tabbar-search" id="btG-Ld-e6P"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ccx-Kg-uaK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -450,11 +488,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKQ-i2-y1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="-618"/>
+            <point key="canvasLocation" x="-28" y="-270"/>
         </scene>
     </scenes>
     <resources>
         <image name="blank" width="1" height="1"/>
         <image name="star-off" width="40" height="40"/>
+        <image name="tabbar-search" width="30" height="30"/>
+        <image name="tabbar-star" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="m8C-ni-OiE"/>
+    </inferredMetricsTieBreakers>
 </document>
