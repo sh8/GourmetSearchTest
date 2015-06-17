@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240418161B31511300AF577B /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240418151B31511300AF577B /* Favorite.swift */; };
 		2438D1CB1B1086B900B480ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2438D1CA1B1086B900B480ED /* AppDelegate.swift */; };
 		2438D1CD1B1086B900B480ED /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2438D1CC1B1086B900B480ED /* ShopListViewController.swift */; };
 		2438D1D01B1086B900B480ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2438D1CE1B1086B900B480ED /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		240418151B31511300AF577B /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		2438D1C51B1086B900B480ED /* GourmetSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmetSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2438D1C91B1086B900B480ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2438D1CA1B1086B900B480ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				24D060611B10B35B00D167CE /* YahooLocal.swift */,
+				240418151B31511300AF577B /* Favorite.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				248CB0441B109A33005D2A9D /* ShopListItemTableViewCell.swift in Sources */,
+				240418161B31511300AF577B /* Favorite.swift in Sources */,
 				2438D1CD1B1086B900B480ED /* ShopListViewController.swift in Sources */,
 				24D060621B10B35B00D167CE /* YahooLocal.swift in Sources */,
 				244595E51B2D6E7900C18B03 /* FreewordTableViewCell.swift in Sources */,
