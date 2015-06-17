@@ -47,6 +47,8 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
         
         // 住所
         address.text = shop.address
+        
+        updateFavoriteButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -77,10 +79,22 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let scrollOffset = scrollView.contentOffset.y + scrollView.contentInset.top
-        println("ok")
         if scrollOffset <= 0 {
             photo.frame.origin.y = scrollOffset
             photo.frame.size.height = 200 - scrollOffset
+        }
+    }
+    
+    // MARK: - アプリケーションロジック
+    func updateFavoriteButton(){
+        if Favorite.inFavorites(shop.gid){
+            // お気に入りに入っている
+            favoriteIcon.image = UIImage(named: "star-on")
+            favoriteLabel.text = "お気に入りから外す"
+        } else {
+            // お気に入りに入っていない
+            favoriteIcon.image = UIImage(named: "star-off")
+            favoriteLabel.text = "お気に入りに入れる"
         }
     }
 
@@ -94,7 +108,8 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func favoriteTapped(sender: UIButton) {
-        println("favoriteTapped")
+        Favorite.toggle(shop.gid)
+        updateFavoriteButton()
     }
     
     
