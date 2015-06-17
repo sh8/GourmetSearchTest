@@ -54,7 +54,16 @@ class ShopListViewController: UIViewController, UITableViewDelegate, UITableView
         )
  
         if yls.shops.count == 0 {
-            yls.loadData(reset: true)
+            if self.navigationController is FavoriteNavigationController {
+                loadFavorites()
+                // ナビゲーションタイトル設定
+                self.navigationItem.title = "お気に入り"
+            } else {
+                // 検索: 設定された検索条件から検索
+                yls.loadData(reset: true)
+                // ナビゲーションバータイトル設定
+                self.navigationItem.title = "店舗一覧"
+            }
         }
 
     }
@@ -129,6 +138,25 @@ class ShopListViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - アプリケーションロジック
     
+    func loadFavorites(){
+        // お気に入りをUser Defaultから読み込む
+        Favorite.load()
+        // お気に入りがあれば店舗ID一覧を作成して検索を実行する
+        if Favorite.favorites.count > 0 {
+            // お気に入り一覧を表現する検索条件オブジェクト
+            var condition = QueryCondition()
+            // favoritesプロパティの中身を「,」で結合して文字列にする
+            condition.gid = join(",", Favorite.favorites)
+            yls.condition = condition
+            yls.loadData(reset: true)
+        } else {
+            NSNotificationCenter.defaultCenter().postNotificationName(
+                yls.YLSLoadCompleteNotification,
+                object: nil
+            )
+        }
+    }
+    
     func onRefresh(refreshControl: UIRefreshControl){
         // UIRefreshControlを読込中状態にする
         refreshControl.beginRefreshing()
@@ -145,8 +173,12 @@ class ShopListViewController: UIViewController, UITableViewDelegate, UITableView
                 refreshControl.endRefreshing()
             }
         )
-        // 再取得
-        yls.loadData(reset: true)
+        if self.navigationController is FavoriteNavigationController {
+          loadFavorites()
+        } else {
+          // そのまま再取得する
+          yls.loadData(reset: true)
+        }
     }
     
     // MARK: - Navigation
