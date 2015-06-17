@@ -9,9 +9,9 @@
 import UIKit
 import MapKit
 
-class ShopDetailViewController: UIViewController {
+class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var scrollView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tel: UILabel!
@@ -19,9 +19,9 @@ class ShopDetailViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var favoriteIcon: UIImageView!
     @IBOutlet weak var favoriteLabel: UILabel!
-
-    @IBOutlet weak var nameHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var addressContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var nameHeight: NSLayoutConstraint!
     
     var shop = Shop()
 
@@ -43,15 +43,24 @@ class ShopDetailViewController: UIViewController {
         name.text = shop.name
         
         // 電話番号
-        tel.text = shop.address
+        tel.text = shop.tel
         
         // 住所
         address.text = shop.address
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.scrollView.delegate = self
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.scrollView.delegate = nil
+        super.viewDidDisappear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidLayoutSubviews() {
@@ -64,7 +73,31 @@ class ShopDetailViewController: UIViewController {
         addressContainerHeight.constant = addressFrame.height
         view.layoutIfNeeded()
     }
+    
+    // MARK: - UIScrollViewDelegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let scrollOffset = scrollView.contentOffset.y + scrollView.contentInset.top
+        println("ok")
+        if scrollOffset <= 0 {
+            photo.frame.origin.y = scrollOffset
+            photo.frame.size.height = 200 - scrollOffset
+        }
+    }
 
+    // MARK: - IBAction
+    @IBAction func telTapped(sender: UIButton) {
+        println("telTapped")
+    }
+ 
+    @IBAction func addressTapped(sender: UIButton) {
+        println("addressTapped")
+    }
+    
+    @IBAction func favoriteTapped(sender: UIButton) {
+        println("favoriteTapped")
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -74,17 +107,5 @@ class ShopDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    @IBAction func telTapped(sender: UIButton) {
-        println("telTapped")
-    }
-    
-    @IBAction func addressTapped(sender: UIButton) {
-        println("addressTapped")
-    }
-
-    @IBAction func favoriteTapped(sender: UIButton) {
-        println("favoriteTapped")
-    }
 
 }
