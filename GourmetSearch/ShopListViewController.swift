@@ -30,6 +30,10 @@ class ShopListViewController: UIViewController, UITableViewDelegate, UITableView
             usingBlock: {
                 (notification) in
                 
+                if self.yls.condition.gid != nil {
+                    self.yls.sortByGid()
+                }
+                
                 self.tableView.reloadData()
 
                 // エラーがあればダイアログを開く
