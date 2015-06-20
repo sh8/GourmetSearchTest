@@ -126,7 +126,13 @@
                             <constraint firstItem="wQp-sK-Hag" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="z5u-1u-iTg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g5w-av-h4Q"/>
+                    <navigationItem key="navigationItem" id="g5w-av-h4Q">
+                        <barButtonItem key="rightBarButtonItem" title="編集" id="8g4-TZ-L3Q">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="vXZ-lx-hvc" id="fMH-3h-l5x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="wQp-sK-Hag" id="wmi-Wf-Up3"/>
                         <segue destination="5Df-Sc-ptJ" kind="show" identifier="PushShopDetail" id="FKJ-6O-QIF"/>
@@ -139,7 +145,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="9QH-6k-aej">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jlS-f1-h1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="yGd-Se-Mwx" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="kkj-hK-UYG">
@@ -152,13 +157,14 @@
                         <segue destination="m1l-4E-npp" kind="relationship" relationship="viewControllers" id="x4X-hD-VXP"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlS-f1-h1k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-789" y="485"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="8xg-kd-dkQ">
             <objects>
-                <navigationController id="m1l-4E-npp" sceneMemberID="viewController">
+                <navigationController id="m1l-4E-npp" customClass="FavoriteNavigationController" customModule="GourmetSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="tabbar-star" id="FYc-MX-Fxp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dwv-SL-LDL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -399,11 +405,53 @@
                         <outlet property="photo" destination="IWU-CI-CXl" id="XfR-Zi-nL2"/>
                         <outlet property="scrollView" destination="Tc5-bU-mcR" id="3pM-Bg-CTy"/>
                         <outlet property="tel" destination="NqX-LU-LJO" id="YYI-Lp-DJB"/>
+                        <segue destination="IMS-zY-nKh" kind="show" identifier="PushMapDetail" id="w2d-TL-Amm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5l-DT-hAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2139" y="485"/>
+        </scene>
+        <!--Shop Map Detail View Controller-->
+        <scene sceneID="62h-GS-xPr">
+            <objects>
+                <viewController id="IMS-zY-nKh" userLabel="Shop Map Detail View Controller" customClass="ShopMapDetailViewController" customModule="GourmetSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rrh-Yv-fYV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ky7-rA-yCN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zey-1f-SGS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kxP-To-7sa">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kxP-To-7sa" firstAttribute="top" secondItem="zey-1f-SGS" secondAttribute="topMargin" id="52m-G5-Fyi"/>
+                            <constraint firstAttribute="width" secondItem="kxP-To-7sa" secondAttribute="width" id="HPJ-YI-bqB"/>
+                            <constraint firstAttribute="height" secondItem="kxP-To-7sa" secondAttribute="height" id="f96-3f-wUv"/>
+                            <constraint firstItem="kxP-To-7sa" firstAttribute="leading" secondItem="zey-1f-SGS" secondAttribute="leadingMargin" constant="-16" id="gpH-ix-Fdf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="06S-So-aqY">
+                        <barButtonItem key="rightBarButtonItem" title="現在地を表示" id="BAf-fr-ZuH">
+                            <connections>
+                                <action selector="showHereButtonTapped:" destination="IMS-zY-nKh" id="kp0-hT-euI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="map" destination="kxP-To-7sa" id="PE2-y8-d14"/>
+                        <outlet property="shopHereButton" destination="BAf-fr-ZuH" id="g63-DA-Tq9"/>
+                        <outlet property="showHereButton" destination="BAf-fr-ZuH" id="gIq-i6-zEA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DNp-UZ-eYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2789" y="485"/>
         </scene>
         <!--Search Top Table View Controller-->
         <scene sceneID="pE1-BJ-WEU">
@@ -476,7 +524,7 @@
         <!--Search-->
         <scene sceneID="u0M-Qw-Ebl">
             <objects>
-                <navigationController id="ZOu-6g-CmC" sceneMemberID="viewController">
+                <navigationController id="ZOu-6g-CmC" customClass="SearchNavigationController" customModule="GourmetSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="tabbar-search" id="btG-Ld-e6P"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ccx-Kg-uaK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
