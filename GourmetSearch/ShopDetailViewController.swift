@@ -39,6 +39,21 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
             photo.image = UIImage(named: "loading")
         }
         
+        // 地図
+        if let lat = shop.lat {
+            if let lon = shop.lon {
+                // 地図の表示範囲を指定
+                let cllc = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                let mkcr = MKCoordinateRegionMakeWithDistance(cllc, 200, 200)
+                map.setRegion(mkcr, animated: false)
+                
+                // ピンを設定
+                let pin = MKPointAnnotation()
+                pin.coordinate = cllc
+                map.addAnnotation(pin)
+            }
+        }
+        
         // 店舗名
         name.text = shop.name
         
@@ -97,6 +112,14 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
             favoriteLabel.text = "お気に入りに入れる"
         }
     }
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PushMapDetail" {
+            let vc = segue.destinationViewController as! ShopMapDetailViewController
+            vc.shop = shop
+        }
+    }
 
     // MARK: - IBAction
     @IBAction func telTapped(sender: UIButton) {
@@ -104,7 +127,7 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
     }
  
     @IBAction func addressTapped(sender: UIButton) {
-        println("addressTapped")
+        performSegueWithIdentifier("PushMapDetail", sender: nil)
     }
     
     @IBAction func favoriteTapped(sender: UIButton) {
