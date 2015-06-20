@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
+class SearchTopTableViewController: UITableViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     var freeword: UITextField? = nil
 
@@ -39,22 +39,32 @@ class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
+        switch section {
+        case 0:
+            return 2
+        default:
+            return 0
         }
-        
-        return 0
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("Freeword", forIndexPath: indexPath) as! FreewordTableViewCell
-            self.freeword = cell.freeword
-            cell.freeword.delegate = self
-            cell.selectionStyle = .None
-            
-            return cell
+        if indexPath.section == 0{
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCellWithIdentifier("Freeword", forIndexPath: indexPath) as! FreewordTableViewCell
+                self.freeword = cell.freeword
+                cell.freeword.delegate = self
+                cell.selectionStyle = .None
+                return cell
+            case 1:
+                let cell = UITableViewCell()
+                cell.textLabel?.text = "現在地から検索"
+                cell.accessoryType = .DisclosureIndicator
+                return cell
+            default:
+                return UITableViewCell()
+            }
         }
         return UITableViewCell()
     }
@@ -81,6 +91,17 @@ class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - IBAction
     @IBAction func onTap(sender: UITapGestureRecognizer) {
         freeword?.resignFirstResponder()
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        gestureRecognizer.delegate = self
+
+        if let ifr = freeword?.isFirstResponder() {
+            return ifr
+        }
+        
+        return false
     }
     
 
