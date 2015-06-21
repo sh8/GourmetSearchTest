@@ -111,6 +111,10 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate, UIImageP
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            ShopPhoto.sharedInstance?.append(shop: shop, image: image)
+        }
         ipc.dismissViewControllerAnimated(true, completion: nil)
     }
     
