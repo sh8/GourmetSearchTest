@@ -90,16 +90,28 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
         
         return UICollectionReusableView()
     }
-    
 
-    /*
+
+    // MARK: - UICollectionViewDelegate
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("PushPhotoDetail", sender: indexPath)
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "PushPhotoDetail" {
+            let vc = segue.destinationViewController as! PhotoDetailViewController
+            if let indexPath = sender as? NSIndexPath {
+                if let gid = ShopPhoto.sharedInstance?.gids[indexPath.section] {
+                    if let image = ShopPhoto.sharedInstance?.image(gid, index: indexPath.row) {
+                        vc.image = image
+                    }
+                }
+            }
+        }
     }
-    */
 
 }
