@@ -17,6 +17,7 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView.delegate = self
         
         photo.alpha = 0
         photo.image = image
@@ -32,7 +33,7 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
         view.layoutIfNeeded()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         UIView.animateWithDuration(0.1, animations: {self.photo.alpha = 1})
     }
 
