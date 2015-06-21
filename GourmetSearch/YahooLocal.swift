@@ -24,6 +24,15 @@ public struct Shop: Printable {
     public var hasCoupon = false
     public var station: String? = nil
     
+    public var url: String? {
+        get {
+            if let gid = gid {
+                return "http://loco.yahoo.co.jp/place/g-\(gid)"
+            }
+            return nil
+        }
+    }
+    
     public var description: String {
         get{
             var string = "\nGid: \(gid)\n"
