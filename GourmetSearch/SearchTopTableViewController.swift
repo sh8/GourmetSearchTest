@@ -199,7 +199,6 @@ class SearchTopTableViewController: UITableViewController, UITextFieldDelegate, 
     
     // MARK: - UIGestureRecognizerDelegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        gestureRecognizer.delegate = self
 
         if let ifr = freeword?.isFirstResponder() {
             return ifr
