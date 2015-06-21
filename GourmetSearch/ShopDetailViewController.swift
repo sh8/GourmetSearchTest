@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Social
 
 class ShopDetailViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -19,6 +20,8 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate, UIImageP
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var favoriteIcon: UIImageView!
     @IBOutlet weak var favoriteLabel: UILabel!
+    @IBOutlet weak var line: UIButton!
+    @IBOutlet weak var twitter: UIButton!
     
     @IBOutlet weak var addressContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var nameHeight: NSLayoutConstraint!
@@ -32,6 +35,15 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate, UIImageP
         // UIImagePickerDelegateの設定
         ipc.delegate = self
         ipc.allowsEditing = true
+        
+        // Facebook, Twitter, LINEの利用可能状態をチェック
+        if UIApplication.sharedApplication().canOpenURL(NSURL(string: "line://")!) {
+            line.enabled = true
+        }
+        
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            twitter.enabled = true
+        }
         
         // 写真
         if let url = shop.photoUrl {
@@ -131,6 +143,23 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate, UIImageP
         }
     }
     
+    func share(type: String) {
+        let vc = SLComposeViewController(forServiceType: type)
+        if let name = shop.name {
+            vc.setInitialText(name + "\n")
+        }
+        if let gid = shop.gid {
+            if ShopPhoto.sharedInstance?.count(gid) > 0 {
+                vc.addImage(ShopPhoto.sharedInstance?.image(gid, index: 0))
+            }
+        }
+        if let url = shop.url {
+            vc.addURL(NSURL(string: url))
+        }
+        
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PushMapDetail" {
@@ -141,7 +170,44 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate, UIImageP
 
     // MARK: - IBAction
     @IBAction func telTapped(sender: UIButton) {
-        println("telTapped")
+        if let tel = shop.tel {
+            let url = NSURL(string: "tel:\(tel)")
+            if url == nil {return}
+            
+            if !UIApplication.sharedApplication().canOpenURL(url!) {
+                let alert = UIAlertController(
+                    title: "電話をかけることができません",
+                    message: "この端末には電話機能が搭載されていません",
+                    preferredStyle: .Alert
+                )
+                
+                alert.addAction(
+                    UIAlertAction(title: "OK", style: .Default, handler: nil)
+                )
+                
+                presentViewController(alert, animated: true, completion: nil)
+                return
+            }
+            
+            if let name = shop.name {
+                let alert = UIAlertController(title: name, message: "\(name)に電話をかけます", preferredStyle: .Alert)
+                alert.addAction(
+                    UIAlertAction(title: "電話をかける",
+                        style: .Destructive,
+                        handler: {
+                            action in
+                            UIApplication.sharedApplication().openURL(url!)
+                            return
+                    })
+                )
+                
+                alert.addAction(
+                    UIAlertAction(title: "キャンセル", style: .Cancel, handler: nil)
+                )
+                
+                presentViewController(alert, animated: true, completion: nil)
+            }
+        }
     }
  
     @IBAction func addressTapped(sender: UIButton) {
@@ -194,7 +260,28 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate, UIImageP
         
         presentViewController(alert, animated: true, completion: nil)
     }
+
+    @IBAction func lineTapped(sender: UIButton) {
+        var message = ""
+        if let name = shop.name {
+            message += name + "\n"
+        }
+        
+        if let url = shop.url {
+            message += url + "\n"
+        }
+        
+        if let encoded = message.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) {
+            if let uri = NSURL(string: "line://msg/text/" + encoded) {
+                UIApplication.sharedApplication().openURL(uri)
+            }
+        }
+    }
     
+    @IBAction func twitterTapped(sender: UIButton) {
+        share(SLServiceTypeTwitter)
+    }
+
     /*
     // MARK: - Navigation
 
